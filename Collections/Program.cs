@@ -5,19 +5,40 @@
         static void Main(string[] args)
         {
 
-            string[] friends = new string[5];
-            int counter = 0;
-            foreach (string friend in friends) {
-                Console.WriteLine("Enter your friends name");
-                string input = Console.ReadLine();
-                friends[counter] = input;
-                counter++;
-            }
-
-            foreach (string greet in friends) {
-                Console.WriteLine("Hello " + greet);
-            }
-            
+            Run();
         }
+        public static void GetOdd(int[] Array)
+        {
+            foreach (int i in Array)
+            {
+                if (i % 2 != 0)
+                {
+                    Console.WriteLine(i);
+                }
+               
+            }
+        }
+
+        public static void GetEven(int[] Array)
+        {
+            foreach (int i in Array)
+            {
+                if (i % 2 == 0)
+                {
+                    Console.WriteLine(i);
+                }
+               
+            }
+        }
+
+        public static void Run()
+        {
+            int[] array = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+            GetOdd(array);
+            GetEven(array);
+
+        }
+
     }
 }
