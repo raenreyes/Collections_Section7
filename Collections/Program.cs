@@ -5,26 +5,19 @@
         static void Main(string[] args)
         {
 
-            int[] nums = new int[10];
-
-            for (int i = 0; i < nums.Length; i++)
-            {
-                Console.Write("Index " + i + ": ");
-                string input = Console.ReadLine();
-                bool success = int.TryParse(input, out nums[i]);
-            }
-            Console.WriteLine("This is the for loop iterating through array");
-            for (int j = 0;j < nums.Length;j++)
-            {
-                Console.WriteLine("Index " + j + ": " + nums[j]);
-            }
-
-            Console.WriteLine("This is the for each loop iterating through array");
+            string[] friends = new string[5];
             int counter = 0;
-            foreach (int k in nums) {
-                Console.WriteLine("Index " + counter + ": " + k);
+            foreach (string friend in friends) {
+                Console.WriteLine("Enter your friends name");
+                string input = Console.ReadLine();
+                friends[counter] = input;
                 counter++;
             }
+
+            foreach (string greet in friends) {
+                Console.WriteLine("Hello " + greet);
+            }
+            
         }
     }
 }
