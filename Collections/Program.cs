@@ -1,44 +1,38 @@
-﻿namespace Collections
+﻿using System.Threading.Channels;
+
+namespace Collections
 {
     internal class Program
     {
+        static int[,] matrix = {
+
+            {1,2,3 },
+            {4,5,6 },
+            {7,8,9 }
+
+        };
         static void Main(string[] args)
-        {
-
-            Run();
-        }
-        public static void GetOdd(int[] Array)
-        {
-            foreach (int i in Array)
+        {   
+            //iterate a 2D array with a foreach loop but only used for iteration
+            foreach (int item in matrix) 
             {
-                if (i % 2 != 0)
+                Console.Write(item + " ");
+            }
+            Console.WriteLine(" ");
+
+            //this is how you iterate a 2D array with a for loop
+            Console.WriteLine("This is our 2D array printed using nested for loop");
+            //out for loop
+            for (int i = 0; i < matrix.GetLength(0); i++) { 
+                //inner for loop
+                for (int j = 0; j < matrix.GetLength(1); j++)
                 {
-                    Console.WriteLine(i);
+                    Console.Write(matrix[i,j] + " ");
                 }
-               
+                Console.WriteLine(" ");
             }
         }
 
-        public static void GetEven(int[] Array)
-        {
-            foreach (int i in Array)
-            {
-                if (i % 2 == 0)
-                {
-                    Console.WriteLine(i);
-                }
-               
-            }
-        }
-
-        public static void Run()
-        {
-            int[] array = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-
-            GetOdd(array);
-            GetEven(array);
-
-        }
 
     }
 }
