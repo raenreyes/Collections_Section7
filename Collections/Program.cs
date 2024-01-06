@@ -6,36 +6,27 @@ namespace Collections
     {
         static void Main(string[] args)
         {
-            //declare jagged array
-            int[][] jaggedArray = new int[3][];
 
-            jaggedArray[0] = new int[5];
-            jaggedArray[1] = new int[3];
-            jaggedArray[2] = new int[2];
+            int[] sum1 = new int[] { 1001, 5, 2, 34, -675, 23, 3, 1, 2345, 5 };
+            int[] sum2 = new int[] { 3, 1, 99 };
+            int[] sum3 = new int[] { 58, 2, 89, 23, 344, 345, 65, -6, 53, 4, 34, 35, 5, 65, 65, 34, 3, 5, 4 };
 
+            Console.WriteLine("The min value of the first array is " + Min(sum1));
+            Console.WriteLine("The min value of the first array is " + Min(sum2));
+            Console.WriteLine("The min value of the first array is " + Min(sum3));
 
-            jaggedArray[0] = new int[] { 2, 3, 5, 7, 11 };
-            jaggedArray[1] = new int[] { 1, 2, 3 };
-            jaggedArray[2] = new int[] { 13, 21 };
-
-            //another way to intialize a jagged array
-            int[][] jaggedArray2 = new int[][] {
-                new int[] {2,3,5,7,11 },
-                new int[] {1,2,3 },
-                new int[] {13,21}
-            };
-
-            for (int i = 0; i < jaggedArray2.Length; i++)
+        }
+        public static int Min(params int[] numbers)
+        {
+            int min = int.MaxValue;
+            for (int i = 0; i < numbers.Length; i++)
             {
-                Console.Write("Array " + (i + 1) + ": ");
-                for (int j = 0; j < jaggedArray2[i].Length; j++)
+                if (numbers[i] < min)
                 {
-                    Console.Write(jaggedArray2[i][j] + " ");
+                    min = numbers[i];
                 }
-
-                Console.WriteLine("");
             }
-
+            return min;
         }
     }
 
