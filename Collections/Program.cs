@@ -7,46 +7,43 @@ namespace Collections
     {
         static void Main(string[] args)
         {
-            //ArrayList can hold any type of objects like int, string or doubles
-            int num = 6;
+            //declare a arraylist with no undefined size of the list
+            ArrayList myArrayList = new ArrayList();
+            //array list with a defined size
+            ArrayList myArrayList2 = new ArrayList(100);
 
-            string name = "Raen Reyes";
+            myArrayList.Add(25);
+            myArrayList.Add("Hello");
+            myArrayList.Add(13.37);
+            myArrayList.Add(5);
+            myArrayList.Add(13);
+            myArrayList.Add(14);
+            myArrayList.Add(25.3f);
 
-            float pi = 3.14f;
+            //delete element with specific entry to an array list
+            myArrayList.Remove(13);
 
-            ArrayList myList = new ArrayList();
-            myList.Add(num);
-            myList.Add(name);
-            myList.Add(pi);
 
-            foreach (object i in myList)
+            //delete element at a specfic position
+            myArrayList.RemoveAt(0);
+
+            //how many objects are in your array list
+            Console.WriteLine("The count of my array list is " + myArrayList.Count);
+
+            double sum = 0;
+
+            foreach (object i in myArrayList)
             {
-                Console.Write(i + " ");
-            }
-
-            //this is a list and its generic which means it can only hold one type of data type
-            List<int> list = new List<int>();
-            int userNum = 0;
-            while (userNum != 99)
-            {
-                Console.WriteLine("Hello pls enter numbers for a list");
-                string toConvert = Console.ReadLine();
-                bool success = int.TryParse(toConvert, out userNum);
-                if(success && userNum != 99)
+                if (i is int || i is double || i is float)
                 {
-                    list.Add(userNum);
+                    sum += Convert.ToDouble(i);
                 }
-                else  {
-                    Console.WriteLine("Pls enter a valid number");
-                }
+         
             }
-            Console.WriteLine("This are the values that you passed");
-            foreach (int i in list)
-            {
-                Console.Write(i + " ");
-            }
+
+            Console.WriteLine("\nThe sum of the arraylist is " + sum);
         }
-       
+
     }
 
 }
