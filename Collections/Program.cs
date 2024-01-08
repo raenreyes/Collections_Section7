@@ -10,27 +10,25 @@ namespace Collections
     {
         static void Main(string[] args)
         {
-            List<int> list = new List<int> { 3, 2, 4 };
-            List<int> result = TwoSum(list, 6);
+            List<int> evenNumberList = Solution();
 
-            foreach (int k in result)
+            foreach (int i in evenNumberList)
             {
-                Console.Write(k + " ");
+                Console.Write(i + " ");
             }
         }
-            public static List<int> TwoSum(List<int> nums, int target)
+        public static List<int> Solution()
         {
-            for (int i = 0; i < nums.Count; i++)
+            List<int> evenNumbers = new List<int>();
+            for (int i = 100; i <= 170; i++)
             {
-                for(int j = i + 1; j < nums.Count; j++)
+                if(i % 2 == 0)
                 {
-                    if (nums[i] + nums[j] == target)
-                    {
-                        return new List<int> { i, j };
-                    }
+                    evenNumbers.Add(i);
                 }
             }
-            return new List<int>(0);
+            return evenNumbers;
+
         }
     }
 }
