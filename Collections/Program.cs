@@ -30,28 +30,25 @@ namespace Collections
             {
                 employeesDirectory.Add(item.Role, item);
             }
-            //how to fetch a single entry in a dictionary
-            string key = "CEO";
-            if (employeesDirectory.ContainsKey(key))
+
+            //how to update a key in a dictionary
+            string keyToUpdate = "HR";
+            if (employeesDirectory.ContainsKey(keyToUpdate))
             {
-                Employee empl = employeesDirectory["CEO"];
-                Console.WriteLine("This value has been retrived");
-                Console.WriteLine($"Employee name: {empl.Name}, Role: {empl.Role}, Age: {empl.Age}, Salary: ${empl.Salary}");
-            }
-            else {
-                Console.WriteLine("This key does not exist");
+                employeesDirectory[keyToUpdate] = new Employee("HR","Eleka",26,18);
+                Console.WriteLine($"Employee/Role {keyToUpdate} was updated");
             }
 
-            Employee result = null;
-            //this is the try and get value way of getting data
-            if(employeesDirectory.TryGetValue("Intern", out result))
+            //how to remove a key
+            string keyToRemove = "Intern";
+            if (employeesDirectory.ContainsKey(keyToRemove))
             {
-                Console.WriteLine("\nThis value has been retrived");
-                Console.WriteLine($"Employee name: {result.Name}, Role: {result.Role}, Age: {result.Age}, Salary: ${result.Salary}");
+                employeesDirectory.Remove(keyToRemove);
+                Console.WriteLine($"Employee/Role {keyToRemove} has been deleted");
             }
 
-            //using keyvaluepair to iterate over the dictionaary
-            for (int i = 0; i < employeesDirectory.Count; i++) {
+            for (int i = 0; i < employeesDirectory.Count; i++)
+            {
                 KeyValuePair<string, Employee> keyValuePair = employeesDirectory.ElementAt(i);
                 Console.WriteLine($"\nKey: {keyValuePair.Key}");
 
@@ -60,7 +57,7 @@ namespace Collections
                 Console.WriteLine($"Employee name: {emplValue.Name}, Role:" +
                     $" {emplValue.Role}, Age: {emplValue.Age}, Salary: ${emplValue.Salary}");
             }
-           
+
         }
 
     }
