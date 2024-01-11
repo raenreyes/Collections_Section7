@@ -13,53 +13,52 @@ namespace Collections
         //Auto - Car
         static void Main(string[] args)
         {
-            Employee[] employees = {
-                new Employee("CEO", "Gwyn", 95, 200),
-                new Employee("Manager", "Joe", 35, 25),
-                new Employee("HR", "Lora", 32, 21),
-                new Employee("Secretary", "Petra", 28, 18),
-                new Employee("Lead Developer", "Raen", 55, 35),
-                new Employee("Intern", "Ernest", 22, 8),
+          Dictionary<int,Gamer> entryForGamers = new Dictionary<int,Gamer>();
+            string continueLoop = " ";
 
-            };
-
-            Dictionary<string, Employee> employeesDirectory = new Dictionary<string, Employee>();
-
-
-            foreach (Employee item in employees)
+            while (continueLoop != "n")
             {
-                employeesDirectory.Add(item.Role, item);
+                
+                Console.WriteLine("Enter a ID in numbers for your player: ");
+                string userID = Console.ReadLine();
+                int keyID = int.Parse(userID);
+
+                Console.WriteLine("Enter Your Role: ");
+                string role = Console.ReadLine();
+                Console.WriteLine("Enter Your Gamer Name: ");
+                string userName = Console.ReadLine();
+                Console.WriteLine("Enter Your Rank: ");
+                string rankChange = Console.ReadLine();
+                int rank = int.Parse(rankChange);
+
+                if (entryForGamers.ContainsKey(keyID))
+                {
+                    Console.WriteLine("That user ID already Exist these stats will not be saved");
+                }
+                else {
+                    entryForGamers.Add(keyID, new Gamer(role, userName, rank));
+                }
+
+                Console.WriteLine("\nWould you like to add another player: (y/n)");
+                continueLoop = Console.ReadLine();
+                continueLoop = continueLoop.ToLower();
+
+
+
             }
-
-            //how to update a key in a dictionary
-            string keyToUpdate = "HR";
-            if (employeesDirectory.ContainsKey(keyToUpdate))
-            {
-                employeesDirectory[keyToUpdate] = new Employee("HR","Eleka",26,18);
-                Console.WriteLine($"Employee/Role {keyToUpdate} was updated");
-            }
-
-            //how to remove a key
-            string keyToRemove = "Intern";
-            if (employeesDirectory.ContainsKey(keyToRemove))
-            {
-                employeesDirectory.Remove(keyToRemove);
-                Console.WriteLine($"Employee/Role {keyToRemove} has been deleted");
-            }
-
-            for (int i = 0; i < employeesDirectory.Count; i++)
-            {
-                KeyValuePair<string, Employee> keyValuePair = employeesDirectory.ElementAt(i);
-                Console.WriteLine($"\nKey: {keyValuePair.Key}");
-
-                Employee emplValue = keyValuePair.Value;
-
-                Console.WriteLine($"Employee name: {emplValue.Name}, Role:" +
-                    $" {emplValue.Role}, Age: {emplValue.Age}, Salary: ${emplValue.Salary}");
-            }
+            IterateGamerData(entryForGamers);
 
         }
-
+        public static void IterateGamerData (Dictionary<int, Gamer> entryForGamers)
+        {
+            foreach (KeyValuePair<int,Gamer> temp in entryForGamers)
+            {
+                Gamer gamer = temp.Value;
+                Console.WriteLine($"Gamer ID: {temp.Key}, Role: {gamer.Role}, UserName: {gamer.Name}, Rank: {gamer.rank}");
+            }
+        }
+        
+        
     }
 
 }

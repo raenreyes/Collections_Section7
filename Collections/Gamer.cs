@@ -6,19 +6,17 @@ using System.Threading.Tasks;
 
 namespace Collections
 {
-    public class Employee
+    public class Gamer
     {
         public string Role { get; set; }
         public string Name { get; set; }
-        public int Age { get; set; }
-        public float Rate { get; set; }
-        public float Salary { get { return Rate * 8 * 5 * 4 * 12; } }
+        public int rank { get; set; }
+        
 
-        public Employee(string role, string name, int age, float rate) { 
+        public Gamer(string role, string name, int rank) { 
             this.Role = role;
             this.Name = name;
-            this.Age = age;
-            this.Rate = rate;
+            this.rank = rank;
         }
     }
 }
