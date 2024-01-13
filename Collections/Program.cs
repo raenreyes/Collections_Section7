@@ -13,52 +13,53 @@ namespace Collections
         //Auto - Car
         static void Main(string[] args)
         {
-          Dictionary<int,Gamer> entryForGamers = new Dictionary<int,Gamer>();
-            string continueLoop = " ";
-
-            while (continueLoop != "n")
+            Stack<int> stack = new Stack<int>();
+            //how to add an obect to a stack using Push()
+            stack.Push(1);
+            stack.Push(2);
+            //Peek() will return the element at the top of the stack without removing it
+            Console.WriteLine($"The element at the top of the stack is {stack.Peek()}");
+            stack.Push(3);
+            Console.WriteLine($"The element at the top of the stack is {stack.Peek()}");
+            stack.Push(4);
+            Console.WriteLine($"The element at the top of the stack is {stack.Peek()}");
+            //remove an item from a stack
+            if (stack.Count > 0)
             {
-                
-                Console.WriteLine("Enter a ID in numbers for your player: ");
-                string userID = Console.ReadLine();
-                int keyID = int.Parse(userID);
-
-                Console.WriteLine("Enter Your Role: ");
-                string role = Console.ReadLine();
-                Console.WriteLine("Enter Your Gamer Name: ");
-                string userName = Console.ReadLine();
-                Console.WriteLine("Enter Your Rank: ");
-                string rankChange = Console.ReadLine();
-                int rank = int.Parse(rankChange);
-
-                if (entryForGamers.ContainsKey(keyID))
-                {
-                    Console.WriteLine("That user ID already Exist these stats will not be saved");
-                }
-                else {
-                    entryForGamers.Add(keyID, new Gamer(role, userName, rank));
-                }
-
-                Console.WriteLine("\nWould you like to add another player: (y/n)");
-                continueLoop = Console.ReadLine();
-                continueLoop = continueLoop.ToLower();
-
-
-
+                Console.WriteLine($"Popped Item is {stack.Pop()}");
             }
-            IterateGamerData(entryForGamers);
+            
+            Console.WriteLine($"The element at the top of the stack is {stack.Peek()}");
 
-        }
-        public static void IterateGamerData (Dictionary<int, Gamer> entryForGamers)
-        {
-            foreach (KeyValuePair<int,Gamer> temp in entryForGamers)
+            while (stack.Count > 0)
             {
-                Gamer gamer = temp.Value;
-                Console.WriteLine($"Gamer ID: {temp.Key}, Role: {gamer.Role}, UserName: {gamer.Name}, Rank: {gamer.rank}");
+                Console.WriteLine($"Popping all items {stack.Pop()}");
+            }
+
+
+
+             //with a stack
+            //reverse an array
+            int[] numbers =  new int[] { 8,2,3,4,7,6,2};
+            Stack<int> reverseArray = new Stack<int>();
+
+            foreach (int item in numbers)
+            {
+                Console.Write(item + " ");
+                reverseArray.Push(item);
+            }
+
+            Console.WriteLine("\nThe numbers in reverse");
+
+            while (reverseArray.Count > 0)
+            {
+                int number = reverseArray.Pop();
+                Console.Write(number + " ");
             }
         }
-        
-        
+
+
+
     }
 
 }
