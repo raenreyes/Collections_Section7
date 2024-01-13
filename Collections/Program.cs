@@ -13,54 +13,50 @@ namespace Collections
         //Auto - Car
         static void Main(string[] args)
         {
-            Stack<int> stack = new Stack<int>();
-            //how to add an obect to a stack using Push()
-            stack.Push(1);
-            stack.Push(2);
-            //Peek() will return the element at the top of the stack without removing it
-            Console.WriteLine($"The element at the top of the stack is {stack.Peek()}");
-            stack.Push(3);
-            Console.WriteLine($"The element at the top of the stack is {stack.Peek()}");
-            stack.Push(4);
-            Console.WriteLine($"The element at the top of the stack is {stack.Peek()}");
-            //remove an item from a stack
-            if (stack.Count > 0)
-            {
-                Console.WriteLine($"Popped Item is {stack.Pop()}");
-            }
             
-            Console.WriteLine($"The element at the top of the stack is {stack.Peek()}");
-
-            while (stack.Count > 0)
+            Queue<Order> ordersQueue = new Queue<Order>();
+            
+            foreach (Order i in ReceiveOrdersFromBranch1())
             {
-                Console.WriteLine($"Popping all items {stack.Pop()}");
+                ordersQueue.Enqueue(i);
+            }
+            foreach (Order o in ReceiveOrdersFromBranch2())
+            {
+                ordersQueue.Enqueue(o);
             }
 
-
-
-             //with a stack
-            //reverse an array
-            int[] numbers =  new int[] { 8,2,3,4,7,6,2};
-            Stack<int> reverseArray = new Stack<int>();
-
-            foreach (int item in numbers)
+            while(ordersQueue.Count > 0)
             {
-                Console.Write(item + " ");
-                reverseArray.Push(item);
+                ordersQueue.Dequeue().ProcessOrder();
             }
 
-            Console.WriteLine("\nThe numbers in reverse");
+        }
+        public static List<Order> ReceiveOrdersFromBranch1()
+        {
+            List<Order> orders = new List<Order>();
 
-            while (reverseArray.Count > 0)
-            {
-                int number = reverseArray.Pop();
-                Console.Write(number + " ");
-            }
+            orders.Add(new Order(1, 5));
+            orders.Add(new Order(2, 4));
+            orders.Add(new Order(6, 10));
+
+            return orders;
         }
 
+        public static List<Order> ReceiveOrdersFromBranch2()
+        {
+            List<Order> orders = new List<Order>();
+
+            orders.Add(new Order(3, 69));
+            orders.Add(new Order(4, 4));
+            orders.Add(new Order(5, 14));
+
+            return orders;
+        }
+       
 
 
     }
+
 
 }
 
